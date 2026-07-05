@@ -1,26 +1,69 @@
-# PawGPA - Academic Performance & GPA Management System
+# PawGPA
 
-PawGPA is a high-performance web application engineered to calculate academic semester GPAs, predict future CGPA trajectories, and automatically map out granular grade-combination strategies. Built with React, TypeScript, and Tailwind CSS, the platform leverages asynchronous processing and browser local storage for localized configuration state persistence.
+Smart GPA planning tool built with React — calculate your semester GPA, predict the score you need to hit a target CGPA, and explore optimal grade combinations to reach your goals.
 
-## 🛠️ Core Architecture & Features
+**Live Demo:** [pawgpa.vercel.app](#) <!-- update this link after deploying to Vercel -->
 
-- **Semester GPA Engine:** Computes course-weighted indices dynamically based on credit distribution and standard alphabetic grade mappings.
-- **Predictive Trajectory Model:** Evaluates historical cumulative performance ($CGPA$) alongside finished/future credit vectors to isolate target threshold constraints.
-- **Grade Combinatorics Planner:** Employs a deterministic search algorithm to solve the credit-grade weight equation, yielding actionable strategic roadmaps.
-- **Persistent Storage (LocalStorage Engine):** Bypasses transactional cloud bottlenecks by implementing client-side persistence for immediate, cached state retrieval.
+## Features
 
-## 🚀 Technical Stack
+- **Semester GPA Calculator** — Add subjects with credits and grades to instantly compute your semester GPA.
+- **Target CGPA Predictor** — Enter your current CGPA, completed credits, and a target CGPA to calculate exactly what GPA you need next semester (reverse-GPA solving), with edge-case handling for impossible or already-achieved targets.
+- **Grade Strategy Planner** — Set a target GPA and generate the top possible grade combinations across your subjects using a combinatorial search algorithm.
+- **Study Corner** — Browse curated study tips and post/save your own advice, persisted locally via `localStorage`.
 
-- **Framework:** React 18 (Vite Bundler)
-- **Language:** TypeScript (Strict Type Safety)
-- **Styling UI:** Tailwind CSS & PostCSS
-- **Iconography:** Lucide React Engine
+## Tech Stack
 
-## 💻 Installation & Environment Setup
+- React (with Hooks: `useState`, `useEffect`)
+- TypeScript
+- Tailwind CSS
+- lucide-react (icons)
 
-Follow these steps to initialize the application locally:
+## How It Works
 
-1. **Clone the Source Repository:**
-   ```bash
-   git clone [https://github.com/dwivedisaumya/PawGPA.git](https://github.com/dwivedisaumya/PawGPA.git)
-   cd paw-gpa
+### Reverse-GPA Calculation
+Given current CGPA, completed credits, and a target CGPA, the app solves for the required next-semester GPA:
+
+```
+requiredGPA = ((targetCGPA * totalFutureCredits) - (currentCGPA * completedCredits)) / nextSemCredits
+```
+
+The app also handles boundary cases — if the required GPA exceeds 10, it returns the maximum CGPA achievable instead; if it's negative, it confirms the user is already on track.
+
+### Grade Strategy Engine
+Using a recursive backtracking search, the planner explores grade combinations across all subjects to find the closest matches to a target GPA, ranked by minimum "distance" from the goal — helping students see multiple realistic paths to their target score.
+
+### Local Persistence
+Study Corner suggestions are saved to `localStorage`, so user-submitted tips persist across sessions without needing a backend.
+
+## Getting Started
+
+```bash
+# Clone the repository
+git clone https://github.com/dwivedisaumya/PawGPA.git
+
+# Navigate into the project
+cd PawGPA
+
+# Install dependencies
+npm install
+
+# Run locally
+npm run dev
+```
+
+## Screenshots
+<img width="1555" height="901" alt="Screenshot 2026-07-06 032711" src="https://github.com/user-attachments/assets/5d716177-c007-46a3-9a80-7b1b929d9092" />
+<img width="1610" height="882" alt="Screenshot 2026-07-06 032717" src="https://github.com/user-attachments/assets/7903734c-9004-48a7-9d7d-3a44fa74c5c7" />
+<img width="1740" height="887" alt="Screenshot 2026-07-06 032726" src="https://github.com/user-attachments/assets/3cabcb67-3f17-4ab3-8d95-59c48a601ad5" />
+<img width="1662" height="912" alt="Screenshot 2026-07-06 032733" src="https://github.com/user-attachments/assets/d916211e-39ac-46e5-b9a4-c13592bbc58d" />
+<img width="1341" height="922" alt="Screenshot 2026-07-06 032741" src="https://github.com/user-attachments/assets/0e8b5cd7-5537-4ce0-a70d-26d2e7316ad1" />
+
+## Author
+
+**Saumya Dwivedi**
+- [GitHub](https://github.com/dwivedisaumya)
+- [LinkedIn](https://www.linkedin.com/in/saumya-dwivedi-029472324/)
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
