@@ -2,7 +2,7 @@
 
 Smart GPA planning tool built with React — calculate your semester GPA, predict the score you need to hit a target CGPA, and explore optimal grade combinations to reach your goals.
 
-**Live Demo:** [pawgpa.vercel.app](#) <!-- update this link after deploying to Vercel -->
+**Live Demo:** [[pawgpa.vercel.app](https://paw-gpa-six.vercel.app/)](#) <!-- update this link after deploying to Vercel -->
 
 ## Features
 
