@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Target, Sparkles, Plus, Trash2, GraduationCap, Compass, ArrowRight, Home, Award, MessageSquare, Lightbulb } from 'lucide-react';
+import { Target, Sparkles, Trash2, GraduationCap, Compass, ArrowRight, Home, Award, MessageSquare, Lightbulb } from 'lucide-react';
 
 const GRADE_POINTS: { [key: string]: number } = {
   'S': 10, 'A': 9, 'B': 8, 'C': 7, 'D': 6, 'E': 5, 'F': 0
